@@ -16,7 +16,7 @@ jobs:
       uses: lucacome/docker-image-update-checker@v1
       with:
         base-image: library/rockylinux:8
-        image: simeononsecurity/docker-tor-bridge:latest
+        image: simeononsecurity/rocky-ansible:latest
     -
         name: Checkout
         uses: actions/checkout@v3
