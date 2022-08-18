@@ -7,6 +7,7 @@ LABEL org.opencontainers.image.authors="simeononsecurity"
 # Install packages
 RUN yum -yq update &&\
     yum -yq install python39 epel-release &&\
+    yum -yq update &&\
     yum -yq install 'dnf-command(config-manager)'&&\
     yum config-manager --set-enabled extras &&\
     yum config-manager --set-enabled powertools 
