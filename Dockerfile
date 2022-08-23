@@ -15,6 +15,7 @@ RUN yum -yq update &&\
 # Install Python PIP and Ansible
 RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py &&\
     python3 get-pip.py &&\
-    python3 -m pip install ansible --prefix /usr/local/
+    python3 -m pip install ansible --prefix /usr/local/ &&\
+    python3 -m pip install ansible-lint
 
 ENTRYPOINT [ "/bin/bash" ]
