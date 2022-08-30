@@ -27,6 +27,6 @@ RUN ansible-galaxy collection install ansible.netcommon &&\
     ansible-galaxy collection install ansible.windows &&\
     ansible-galaxy collection install community.general &&\
     ansible-galaxy collection install community.vmware &&\
-    ansible-galaxy collection install community.windows &&\
+    ansible-galaxy collection install community.windows
 
 ENTRYPOINT [ "/bin/bash" ]
