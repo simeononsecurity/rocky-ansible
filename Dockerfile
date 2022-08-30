@@ -6,7 +6,7 @@ LABEL org.opencontainers.image.authors="simeononsecurity"
 
 # Install packages
 RUN yum -yq update &&\
-    yum -yq install python39 epel-release libxslt libxml2 libffi-dev build-base &&\
+    yum -yq install python39 epel-release libxslt libxml2 &&\
     yum -yq update &&\
     yum -yq install 'dnf-command(config-manager)'&&\
     yum config-manager --set-enabled extras &&\
