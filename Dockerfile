@@ -17,8 +17,7 @@ RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py &&\
     python3 get-pip.py &&\
     python3 -m pip install ansible --prefix /usr/local/ &&\
     python3 -m pip install ansible-lint
+RUN yum -y --nobest install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
 RUN yum -y --nobest --skip-broken install ansible
-RUN yum -y --nobest install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm 
-
 
 ENTRYPOINT [ "/bin/bash" ]
