@@ -17,8 +17,16 @@ RUN alternatives --set python /usr/bin/python3
 RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py &&\
     python3 get-pip.py &&\
     python3 -m pip install ansible --prefix /usr/local/ &&\
-    python3 -m pip install ansible-lint
-RUN yum -y --nobest install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
-RUN yum -y --nobest --skip-broken install ansible
+    python3 -m pip install ansible-lint &&\
+    yum -y --nobest install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm &&\
+    yum -y --nobest --skip-broken install ansible
+
+# Preinstall some highly used ansible modules from the galaxy repo
+RUN ansible-galaxy collection install ansible.netcommon &&\
+    ansible-galaxy collection install ansible.utils &&\
+    ansible-galaxy collection install ansible.windows &&\
+    ansible-galaxy collection install community.general &&\
+    ansible-galaxy collection install community.vmware &&\
+    ansible-galaxy collection install community.windows &&\
 
 ENTRYPOINT [ "/bin/bash" ]
