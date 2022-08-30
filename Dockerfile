@@ -13,6 +13,7 @@ RUN yum -yq update &&\
     yum config-manager --set-enabled powertools 
     
 # Install Python PIP and Ansible
+RUN alternatives --set python /usr/bin/python3
 RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py &&\
     python3 get-pip.py &&\
     python3 -m pip install ansible --prefix /usr/local/ &&\
