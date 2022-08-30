@@ -6,7 +6,7 @@ LABEL org.opencontainers.image.authors="simeononsecurity"
 
 # Install packages
 RUN yum -yq update &&\
-    yum -yq install python39 epel-release &&\
+    yum -yq install python39 epel-release libxslt libxml2 libffi-dev build-base &&\
     yum -yq update &&\
     yum -yq install 'dnf-command(config-manager)'&&\
     yum config-manager --set-enabled extras &&\
@@ -17,7 +17,7 @@ RUN alternatives --set python /usr/bin/python3
 RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py &&\
     python3 get-pip.py &&\
     python3 -m pip install ansible --prefix /usr/local/ &&\
-    python3 -m pip install ansible-lint &&\
+    python3 -m pip install ansible-lint Jinja2 MarkupSafe ansible-lint-junit cryptography lxml &&\
     yum -y --nobest install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm &&\
     yum -y --nobest --skip-broken install ansible
 
