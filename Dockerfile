@@ -15,12 +15,11 @@ RUN yum -yq update &&\
     yum -yq install bash-completion bind bind-utils cifs-utils dhcp-server dnf-plugins-core docker-ce dos2unix gcc genisoimage git libffi-devel libnsl libxml2 libxslt mlocate nano ncurses-compat-libs net-tools nfs-utils open-vm-tools openssl openssl-devel postgresql powershell python39 rsync rsyslog samba samba-client sharutils sshpass tcpdump tmux tree wget wireshark zip &&\
 
 # Install Python PIP and Ansible
-#RUN alternatives --set python /usr/bin/python3
+RUN alternatives --set python /usr/bin/python3
 RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py &&\
     python3 get-pip.py &&\
     python3 -m pip install ansible ansible-core --prefix /usr/local/ &&\
-    python3 -m pip install Jinja2 MarkupSafe PyYAML ansible-lint ansible-lint-junit ansible-pylibssh cot cryptography docker docker-compose firewall ipaddr jmespath lxml markovify netaddr pandas paramiko pyOpenSSL pypsrp pyvmomi pywinrm requests-credssp xlrd yamllint &&\
-    alternatives --set python /usr/bin/python3
+    python3 -m pip install Jinja2 MarkupSafe PyYAML ansible-lint ansible-lint-junit ansible-pylibssh cot cryptography docker docker-compose firewall ipaddr jmespath lxml markovify netaddr pandas paramiko pyOpenSSL pypsrp pyvmomi pywinrm requests-credssp xlrd yamllint
     #yum -y --nobest install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm &&\
     #yum -y --nobest --skip-broken install ansible
 
