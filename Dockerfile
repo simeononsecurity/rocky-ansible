@@ -4,17 +4,16 @@ LABEL org.opencontainers.image.source="https://github.com/simeononsecurity/rocky
 LABEL org.opencontainers.image.description="Ansible Controller running on Rockylinux 8"
 LABEL org.opencontainers.image.authors="simeononsecurity"
 
-# Add additional repos
-RUN yum config-manager --add-repo='https://packages.microsoft.com/config/rhel/8/prod.repo' &&\
-    yum config-manager --add-repo='https://download.docker.com/linux/centos/docker-ce.repo'
-
 # Install packages
 RUN yum -yq update &&\
-    yum -yq install bash-completion bind bind-utils cifs-utils dhcp-server dnf-plugins-core docker-ce dos2unix epel-release gcc genisoimage git libffi-devel libnsl libxml2 libxslt mlocate nano ncurses-compat-libs net-tools nfs-utils open-vm-tools openssl openssl-devel postgresql powershell python39 rsync rsyslog samba samba-client sharutils sshpass tcpdump tmux tree wget wireshark zip &&\
-    yum -yq update &&\
-    yum -yq install 'dnf-command(config-manager)'&&\
+    yum -yq install 'dnf-command(config-manager)' epel-release &&\
+    yum config-manager --add-repo='https://packages.microsoft.com/config/rhel/8/prod.repo' &&\
+    yum config-manager --add-repo='https://download.docker.com/linux/centos/docker-ce.repo' &&\
     yum config-manager --set-enabled extras &&\
-    yum config-manager --set-enabled powertools 
+    yum config-manager --set-enabled powertools &&\
+    yum -yq update &&\
+    yum -yq install bash-completion bind bind-utils cifs-utils dhcp-server dnf-plugins-core docker-ce dos2unix gcc genisoimage git libffi-devel libnsl libxml2 libxslt mlocate nano ncurses-compat-libs net-tools nfs-utils open-vm-tools openssl openssl-devel postgresql powershell python39 rsync rsyslog samba samba-client sharutils sshpass tcpdump tmux tree wget wireshark zip &&\
+
  
 # Install Python PIP and Ansible
 RUN alternatives --set python /usr/bin/python3
