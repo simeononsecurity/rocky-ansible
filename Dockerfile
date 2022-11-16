@@ -12,7 +12,7 @@ RUN yum -yq update &&\
     yum config-manager --set-enabled extras &&\
     yum config-manager --set-enabled powertools &&\
     yum -yq update &&\
-    yum -yq install bash-completion bind bind-utils cifs-utils dhcp-server dnf-plugins-core docker-ce dos2unix gcc genisoimage git libffi-devel libnsl libxml2 libxslt mlocate nano ncurses-compat-libs net-tools nfs-utils openssl openssl-devel postgresql powershell python39 rsync rsyslog samba samba-client sharutils sshpass tcpdump tmux tree wget wireshark zip
+    yum -yq install bash-completion bind bind-utils cifs-utils dhcp-server dnf-plugins-core docker-ce dos2unix gcc genisoimage git libffi-devel libnsl libxml2 libxslt mlocate nano ncurses-compat-libs net-tools nfs-utils openssl openssl-devel postgresql python39 rsync rsyslog samba samba-client sharutils sshpass tcpdump tmux tree wget wireshark zip
 
 # Install Python PIP and Ansible
 RUN alternatives --set python /usr/bin/python3
