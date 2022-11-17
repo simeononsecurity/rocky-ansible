@@ -12,13 +12,12 @@ RUN yum -yq update &&\
     yum config-manager --set-enabled extras &&\
     yum config-manager --set-enabled powertools &&\
     yum -yq update &&\
-    yum -yq install bash-completion bind bind-utils cargo cifs-utils dhcp-server dnf-plugins-core dos2unix gcc gcc-c++ genisoimage git libevent-devel libffi-devel libnsl libxml2 libxslt mlocate nano ncurses-compat-libs net-tools nfs-utils openssl openssl-devel postgresql python3-devel python39 redhat-rpm-config rsync rsyslog samba samba-client sharutils sshpass tcpdump tmux tree wget wireshark zip
+    yum -yq install bash-completion bind bind-utils cargo cifs-utils dhcp-server dnf-plugins-core dos2unix gcc gcc-c++ genisoimage git libevent-devel libffi-devel libnsl libxml2 libxslt mlocate nano ncurses-compat-libs net-tools nfs-utils openssl openssl-devel postgresql python3-devel python39 python3-pip redhat-rpm-config rsync rsyslog samba samba-client sharutils sshpass tcpdump tmux tree wget wireshark zip
 
 # Install Python PIP and Ansible
 RUN alternatives --set python /usr/bin/python3
-RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py &&\
-    python3 get-pip.py &&\
-    python3 -m pip install ansible --prefix /usr/local/ &&\
+#RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && python3 get-pip.py
+RUN python3 -m pip install ansible --prefix /usr/local/ &&\
     python3 -m pip install Jinja2 MarkupSafe PyYAML ansible-lint ansible-lint-junit ansible-pylibssh cot cryptography docker docker-compose firewall jmespath lxml markovify netaddr pandas paramiko pyOpenSSL pypsrp pyvmomi pywinrm setuptools_rust wheel xlrd yamllint &&\
     yum -y --nobest install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm &&\
     yum -y --nobest --skip-broken install ansible
