@@ -19,6 +19,7 @@ RUN alternatives --set python /usr/bin/python3
 #RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && python3 get-pip.py
 RUN python3 -m pip install ansible --prefix /usr/local/ &&\
     python3 -m pip install setuptools_rust wheel cryptography==3.1.1 &&\
+    python3 -m pip install --upgrade pip
     python3 -m pip install Jinja2 MarkupSafe PyYAML ansible-lint ansible-lint-junit ansible-pylibssh cot cryptography docker docker-compose firewall jmespath lxml markovify netaddr pandas paramiko pyOpenSSL pypsrp pyvmomi pywinrm setuptools_rust wheel xlrd yamllint &&\
     yum -y --nobest install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm &&\
     yum -y --nobest --skip-broken install ansible
