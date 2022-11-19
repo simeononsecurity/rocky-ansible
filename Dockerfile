@@ -17,7 +17,7 @@ RUN yum -yq update &&\
 # Install Python PIP and Ansible
 RUN alternatives --set python /usr/bin/python3
 #RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && python3 get-pip.py
-RUN python3 -m pip install setuptools_rust &&\
+RUN python3 -m pip install setuptools setuptools_rust &&\
     python3 -m pip install wheel cryptography==3.1.1 &&\
     python3 -m pip install --upgrade pip &&\
     python3 -m pip install ansible --prefix /usr/local/ &&\
