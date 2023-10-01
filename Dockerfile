@@ -1,4 +1,4 @@
-FROM rockylinux:8
+FROM rockylinux:9
 
 LABEL org.opencontainers.image.source="https://github.com/simeononsecurity/rocky-ansible"
 LABEL org.opencontainers.image.description="Ansible Controller running on Rockylinux 8"
@@ -21,7 +21,7 @@ RUN yum -yq update &&\
 RUN alternatives --set python /usr/bin/python3
 #RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && python3 get-pip.py
 RUN python3 -m pip install --no-cache-dir setuptools setuptools_rust &&\
-    python3 -m pip install --no-cache-dir wheel cryptography==3.1.1 &&\
+    python3 -m pip install --no-cache-dir wheel cryptography &&\
     python3 -m pip install --upgrade pip &&\
     python3 -m pip install --no-cache-dir ansible --prefix /usr/local/ &&\
     python3 -m pip install --no-cache-dir Jinja2 MarkupSafe PyYAML ansible-lint ansible-lint-junit ansible-pylibssh cot cryptography docker docker-compose firewall jmespath lxml markovify netaddr pandas paramiko pyOpenSSL pypsrp pyvmomi pywinrm setuptools_rust wheel xlrd yamllint &&\
