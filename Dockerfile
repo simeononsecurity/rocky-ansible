@@ -18,7 +18,7 @@ RUN yum -yq update &&\
     yum -yq install bash-completion bind bind-utils cargo cifs-utils dhcp-server dnf-plugins-core dos2unix gcc gcc-c++ genisoimage git libevent-devel libffi-devel libnsl libxml2 libxslt mlocate nano ncurses-compat-libs net-tools nfs-utils openssl openssl-devel postgresql python3-devel python39 python3-pip redhat-rpm-config rsync rsyslog samba samba-client sharutils sshpass tcpdump tmux tree wget wireshark zip
 
 # Install Python PIP and Ansible
-RUN alternatives --set python /usr/bin/python3
+#RUN alternatives --set python /usr/bin/python3
 #RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && python3 get-pip.py
 RUN python3 -m pip install --no-cache-dir setuptools setuptools_rust &&\
     python3 -m pip install --no-cache-dir wheel cryptography &&\
