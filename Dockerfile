@@ -26,7 +26,7 @@ RUN python3 -m pip install --no-cache-dir setuptools setuptools_rust &&\
     python3 -m pip install --no-cache-dir ansible --prefix /usr/local/ &&\
     python3 -m pip install --no-cache-dir Jinja2 MarkupSafe PyYAML ansible-lint ansible-lint-junit ansible-pylibssh cot cryptography docker docker-compose firewall jmespath lxml markovify netaddr pandas paramiko pyOpenSSL pypsrp pyvmomi pywinrm setuptools_rust wheel xlrd yamllint &&\
     yum -y --nobest install --no-cache-dir https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm &&\
-    yum -y --nobest --skip-broken install ansible
+    yum -y --nobest --skip-broken --no-cache-dir install ansible
 
 # Preinstall some highly used ansible modules from the galaxy repo
 RUN ansible-galaxy collection install ansible.netcommon &&\
